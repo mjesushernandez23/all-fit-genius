@@ -24,7 +24,7 @@ const get = <T>(query: string, params: string[]): Promise<Data<T>> =>
   new Promise(async (resolve, reject) => {
     try {
       const result = await _pool.query<[]>(query, params);
-      result.length ? resolve({ data: JSON.stringify(result) as T, status: 200 }) : resolve({ data: null as T, status: 204 });
+      result.length ? resolve({ data: result as T, status: 200 }) : resolve({ data: null as T, status: 204 });
     } catch (err) {
       const { message } = err as Error;
       console.log(message);

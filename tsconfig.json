@@ -22,7 +22,8 @@
       "@/*": ["./src/*"],
       "@atoms": ["./src/recoil/state/index.ts"],
       "@components/*": ["./src/components/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@models": ["./src/models/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
