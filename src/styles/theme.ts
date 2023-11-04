@@ -1,6 +1,6 @@
 import { Roboto } from 'next/font/google';
 import { createTheme } from '@mui/material/styles';
-import { blue, red } from '@mui/material/colors';
+import { blue, green, red } from '@mui/material/colors';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -11,8 +11,15 @@ const roboto = Roboto({
 const theme = createTheme({
   palette: {
     mode: 'dark',
-    primary: blue,
-    secondary: red,
+    primary: green,
+    
+  },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        variant: 'contained',
+      },
+    },
   },
   typography: {
     fontFamily: roboto.style.fontFamily,

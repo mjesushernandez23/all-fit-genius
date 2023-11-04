@@ -23,7 +23,9 @@
       "@atoms": ["./src/recoil/state/index.ts"],
       "@components/*": ["./src/components/*"],
       "@styles/*": ["./src/styles/*"],
-      "@models": ["./src/models/index.ts"]
+      "@models": ["./src/models/index.ts"],
+      "@utils": ["./src/utils/index.ts"],
+      "@validations": ["./src/utils/validations/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

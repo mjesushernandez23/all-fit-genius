@@ -4,3 +4,8 @@ export interface UserProps {
   password: string;
   role: number;
 }
+
+export interface ResponseLogin {
+  token: string;
+  user: Omit<UserProps, 'password'>;
+}
