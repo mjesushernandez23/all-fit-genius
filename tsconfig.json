@@ -22,6 +22,7 @@
       "@/*": ["./src/*"],
       "@atoms": ["./src/recoil/state/index.ts"],
       "@components/*": ["./src/components/*"],
+      "@constants": ["./src/constants/index.ts"],
       "@styles/*": ["./src/styles/*"],
       "@models": ["./src/models/index.ts"],
       "@utils": ["./src/utils/index.ts"],

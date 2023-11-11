@@ -2,6 +2,7 @@
 //dependencies
 import { FC } from 'react';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 //state
 import { useSetRecoilState } from 'recoil';
@@ -15,16 +16,24 @@ import Paper from '@mui/material/Paper';
 //utils
 import { loginUserValidation } from '@validations';
 import { myFetch } from '@/utils';
+import { signIn, signOut, useSession } from 'next-auth/react';
 //interfaces
 import type { ResponseLogin } from '@models';
-
 //others
+import { redirectTo } from '@constants';
 
 interface LoginFormProps {}
 const LoginForm: FC<LoginFormProps> = (props) => {
   const setLoading = useSetRecoilState(isLoadingAtom);
   const setMessage = useSetRecoilState(messageSnackBarAtom);
   const setUserInfo = useSetRecoilState(userInfoAtom);
+  const { data, status } = useSession();
+
+  const router = useRouter();
+
+  const test = () => {
+    signIn();
+  };
 
   const { values, errors, handleChange, handleBlur, handleSubmit, resetForm } = useFormik({
     ...loginUserValidation,
@@ -35,6 +44,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
         .then(({ data }) => {
           setMessage({ message: 'Se ingreso correctamente', severity: 'success' });
           setUserInfo(data.user);
+          router.push(redirectTo[data.user.role]);
         })
         .catch(() => {
           setMessage({ message: 'Ops! ocurrió un error inesperado, vuelve a intentarlo', severity: 'error' });
@@ -73,6 +83,9 @@ const LoginForm: FC<LoginFormProps> = (props) => {
         <Button type="submit">Entrar</Button>
         <Button className="text-white" variant="text" href="/auth/register" LinkComponent={Link}>
           No tienes una cuenta?
+        </Button>
+        <Button onClick={test} className="text-white" variant="text">
+          test
         </Button>
       </Box>
     </Paper>
